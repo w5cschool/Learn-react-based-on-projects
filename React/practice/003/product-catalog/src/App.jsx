@@ -1,5 +1,6 @@
 import { useState,useEffect } from 'react'
 import './App.css'
+import Filters from './components/Filters'
 
 function App() {
 
@@ -8,7 +9,7 @@ function App() {
   const [search,setSearch] = useState("All")
   const [categories,setCategories] = useState([])
   const [selectedCategory,setSelectedCategory] = useState("All")
-  const [sort,setSort] = useState("asc")
+  const [sortOrder,setSortOrder] = useState("asc")
   const [isLoading,setIsLoading] = useState(false)
   const [errorMessage,setErrorMessage] = useState("")
 
@@ -25,7 +26,7 @@ function App() {
       setProducts(data)
       setFilteredProducts(data)
       const uniqueCategories = [...new Set(data.map(product => product.category))]
-      setCategories('All',...uniqueCategories)
+      setCategories(['All', ...uniqueCategories])
     } catch (error) {
       setErrorMessage(error.message)
     }finally{
@@ -38,10 +39,35 @@ function App() {
     fetchProducts()
   },[])
 
+  useEffect(() => {
+    if(!products.length){
+      setFilteredProducts([]);
+      return;
+    }
+
+    let updated = [...products];
+    if(selectedCategory !== 'All'){
+      updated = updated.filter((products) => products.category === selectedCategory)
+    }
+    if(sortOrder === 'asc'){
+      updated.sort((a,b) => a.price - b.price)
+    }else if(sortOrder === 'desc'){
+      updated.sort((a,b) => b.price - a.price)
+    }
+    setFilteredProducts(updated);
+      },[products,selectedCategory,sortOrder]);
+
   
   return (
     <>
     <h1>Product Catalog</h1>
+    <Filters
+      categories={categories}
+      selectedCategory={selectedCategory}
+      onCategoryChange={setSelectedCategory}
+      sortOrder={sortOrder}
+      onSortOrderChange={setSortOrder} 
+    />
      {/* 判断是否加载中 */}
     {isLoading && <p>Loading products...</p>}
     {errorMessage && <p>Error: {errorMessage}</p>}
@@ -55,7 +81,7 @@ function App() {
             <div key={item.id}>
               <h2>{item.title}</h2>
               <p>{item.description}</p>
-              <p>{item.price}</p>
+              <p>{item.price.toFixed(2)}</p>
             </div>
           )
       )}
