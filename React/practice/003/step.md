@@ -105,3 +105,145 @@
 ```
 
 选择用 `&&` 是因为我们只想在条件为真时渲染组件，条件为假时什么都不展示。
+
+
+[1 tool called]
+
+我们把 `Step 5` 的代码整理好了，你只要把下面两段替换进文件即可。
+
+### 更新 `src/App.jsx`
+
+```1:97:React/practice/003/product-catalog/src/App.jsx
+import { useEffect, useState } from 'react';
+import Filters from './components/Filters';
+import './App.css';
+
+// ... existing code ...
+function App() {
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [categories, setCategories] = useState(['All']);
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [sortOrder, setSortOrder] = useState('none');
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+  async function fetchProducts() {
+    setIsLoading(true);
+    setErrorMessage('');
+    try {
+      const response = await fetch('https://fakestoreapi.com/products');
+      if (!response.ok) {
+        throw new Error('Failed to fetch products');
+      }
+      const data = await response.json();
+      setProducts(data);
+      setFilteredProducts(data);
+      const uniqueCategories = [...new Set(data.map((product) => product.category))];
+      setCategories(['All', ...uniqueCategories]);
+    } catch (error) {
+      setErrorMessage(error.message || 'Something went wrong');
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
+  useEffect(() => {
+    if (!products.length) {
+      setFilteredProducts([]);
+      return;
+    }
+
+    let updated = [...products];
+
+    if (selectedCategory !== 'All') {
+      updated = updated.filter((product) => product.category === selectedCategory);
+    }
+
+    if (sortOrder === 'asc') {
+      updated.sort((a, b) => a.price - b.price);
+    } else if (sortOrder === 'desc') {
+      updated.sort((a, b) => b.price - a.price);
+    }
+
+    setFilteredProducts(updated);
+  }, [products, selectedCategory, sortOrder]);
+
+  return (
+    <>
+      <h1>Product Catalog</h1>
+      <Filters
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onCategoryChange={setSelectedCategory}
+        sortOrder={sortOrder}
+        onSortOrderChange={setSortOrder}
+      />
+      {isLoading && <p>Loading products...</p>}
+      {errorMessage && <p>Error: {errorMessage}</p>}
+      {!isLoading && !errorMessage && filteredProducts.length === 0 && <p>No products found</p>}
+      {filteredProducts.length > 0 && (
+        <div>
+          {filteredProducts.map((item) => (
+            <div key={item.id}>
+              <h2>{item.title}</h2>
+              <p>{item.description}</p>
+              <p>${item.price.toFixed(2)}</p>
+            </div>
+          ))}
+        </div>
+      )}
+    </>
+  );
+}
+
+export default App;
+```
+
+### 新建 `src/components/Filters.jsx`
+
+```javascript
+import PropTypes from 'prop-types';
+
+function Filters({ categories, selectedCategory, onCategoryChange, sortOrder, onSortOrderChange }) {
+  return (
+    <div className="filters">
+      <label>
+        Category:
+        <select value={selectedCategory} onChange={(event) => onCategoryChange(event.target.value)}>
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
+      </label>
+
+      <label>
+        Sort by price:
+        <select value={sortOrder} onChange={(event) => onSortOrderChange(event.target.value)}>
+          <option value="none">Default</option>
+          <option value="asc">Low → High</option>
+          <option value="desc">High → Low</option>
+        </select>
+      </label>
+    </div>
+  );
+}
+
+Filters.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
+  selectedCategory: PropTypes.string.isRequired,
+  onCategoryChange: PropTypes.func.isRequired,
+  sortOrder: PropTypes.oneOf(['none', 'asc', 'desc']).isRequired,
+  onSortOrderChange: PropTypes.func.isRequired,
+};
+
+export default Filters;
+```
+
+保存后重新启动 `npm run dev`，刷新页面就能看到筛选和排序的效果。完成后告诉我，我们继续做产品卡片样式。
