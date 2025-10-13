@@ -1,6 +1,7 @@
 import { useState,useEffect } from 'react'
 import './App.css'
 import Filters from './components/Filters'
+import ProductCard from './components/ProductCard'
 
 function App() {
 
@@ -59,35 +60,37 @@ function App() {
 
   
   return (
-    <>
-    <h1>Product Catalog</h1>
-    <Filters
-      categories={categories}
-      selectedCategory={selectedCategory}
-      onCategoryChange={setSelectedCategory}
-      sortOrder={sortOrder}
-      onSortOrderChange={setSortOrder} 
-    />
-     {/* 判断是否加载中 */}
-    {isLoading && <p>Loading products...</p>}
-    {errorMessage && <p>Error: {errorMessage}</p>}
-    {filteredProducts.length ===0 && <p>No products found</p>}
-    {filteredProducts.length > 0 && 
-    <div>
-      {/* 遍历products */}
-      {filteredProducts.map
-      (item =>
-          (
-            <div key={item.id}>
-              <h2>{item.title}</h2>
-              <p>{item.description}</p>
-              <p>{item.price.toFixed(2)}</p>
-            </div>
-          )
-      )}
-    </div>
-    }
-    </>
+    <main className="catalog-page">
+      <h1>Product Catalog</h1>
+      <Filters
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onCategoryChange={setSelectedCategory}
+        sortOrder={sortOrder}
+        onSortOrderChange={setSortOrder} 
+      />
+      {/* 判断是否加载中 */}
+      {isLoading && <p>Loading products...</p>}
+      {errorMessage && <p>Error: {errorMessage}</p>}
+      {filteredProducts.length ===0 && <p>No products found</p>}
+      {filteredProducts.length > 0 && 
+      <div className='products-grid'>
+        {/* 遍历products */}
+        {filteredProducts.map
+        (item =>
+            (
+              <ProductCard key={item.id}
+                title={item.title}
+                price={item.price}
+                image={item.image}
+                rating={item.rating}
+                description={item.description}
+              />
+            )
+        )}
+      </div>
+      }
+    </main>
   )
 }
 

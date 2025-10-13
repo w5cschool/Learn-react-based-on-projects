@@ -1,15 +1,168 @@
-#root {
-  max-width: 1280px;
-  /* 外边距 0  表示上下为0，auto表示左右为自动居中 */
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: #1f2937;
+  background-color: #f3f4f6;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+}
+
+.catalog-page {
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2.5rem 1.5rem 3rem;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.filters select {
+  margin-top: 0.35rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  font-size: 0.95rem;
+}
+
+.status-message {
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px dashed #d1d5db;
+  background: #f9fafb;
+  color: #4b5563;
   text-align: center;
+  margin: 1.5rem 0;
 }
 
-.card {
-  padding: 2em;
+.status-message.error {
+  color: #b91c1c;
+  background: #fef2f2;
+  border-color: #fecaca;
 }
 
-.read-the-docs {
-  color: #888;
+/* ProductCard 的尺寸主要由两层样式共同决定：
+products-grid（Grid 容器）
+grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
+规定每张卡最小 240px，最多撑满可用宽度。
+Grid 会自动计算每行能摆下多少列并保持间距 gap: 1.75rem。卡片宽度就是这一列的宽度。
+.product-card（卡片自身）
+padding: 1.25rem 设置内边距。
+display: flex; flex-direction: column; gap: 0.75rem; 
+让内部元素竖向排列、间距固定。
+卡片的高度由内部内容撑开，没有固定值；列的宽度由 Grid 限定后，自然形成统一的卡片大小与响应式表现。 */
+
+/* .products-grid {
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+} */
+
+/* .product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 1.25rem;
+
+  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+} */
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 32px rgba(15, 23, 42, 0.12);
+}
+
+.image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 190px;
+  background: #f9fafb;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.image-wrapper img {
+  max-height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.product-card h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2937;
+  min-height: 3rem;
+}
+
+.price {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  color: #f59e0b;
+}
+
+.rating span:last-child {
+  color: #6b7280;
+}
+
+.description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .catalog-page {
+    padding: 1.75rem 1.25rem 2.5rem;
+  }
+
+  h1 {
+    font-size: 1.9rem;
+  }
+
+  .filters {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .image-wrapper {
+    height: 160px;
+  }
 }
