@@ -74,13 +74,13 @@ display: flex; flex-direction: column; gap: 0.75rem;
 让内部元素竖向排列、间距固定。
 卡片的高度由内部内容撑开，没有固定值；列的宽度由 Grid 限定后，自然形成统一的卡片大小与响应式表现。 */
 
-/* .products-grid {
+.products-grid {
   display: grid;
   gap: 1.75rem;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-} */
+}
 
-/* .product-card {
+.product-card {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -91,7 +91,7 @@ display: flex; flex-direction: column; gap: 0.75rem;
 
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-} */
+}
 
 .product-card:hover {
   transform: translateY(-6px);
