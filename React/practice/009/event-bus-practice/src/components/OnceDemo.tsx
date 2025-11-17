@@ -22,10 +22,10 @@ const OnceDemo: FC = () => {
 
   return (
     <div style={{ padding: "20px", border: "2px solid #E91E63", borderRadius: "8px", margin: "10px" }}>
-      <h3>Once 事件演示</h3>
-      <p>这个事件只会被处理一次，即使多次发送</p>
-      <p>
-        <strong>触发次数：</strong> {count}
+      <h3 style={{ color: "#000" }}>Once 事件演示</h3>
+      <p style={{ color: "#000" }}>这个事件只会被处理一次，即使多次发送</p>
+      <p style={{ color: "#000" }}>
+        <strong style={{ color: "#000" }}>触发次数：</strong> {count}
       </p>
       <button
         onClick={handleEmit}

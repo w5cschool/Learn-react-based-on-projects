@@ -13,8 +13,8 @@ const SubMox: FC = () => {
 
   return (
     <div style={{ padding: "20px", border: "2px solid #4CAF50", borderRadius: "8px", margin: "10px" }}>
-      <h3>SubMox 组件</h3>
-      <p>点击按钮发送消息到 "sub-mox" 频道</p>
+      <h3 style={{ color: "#000" }}>SubMox 组件</h3>
+      <p style={{ color: "#000" }}>点击按钮发送消息到 "sub-mox" 频道</p>
       <button
         type="button"
         onClick={() => emit({ name: "pub-mox", timestamp: Date.now() })}

@@ -29,7 +29,7 @@ const App: FC = () => {
             <ChatRoom roomId="1" />
             <ChatRoom roomId="2" />
           </div>
-          <p style={{ color: "#666", fontSize: "14px", marginTop: "10px" }}>
+          <p style={{ color: "#000", fontSize: "14px", marginTop: "10px" }}>
             💡 每个聊天室使用不同的命名空间（room:1, room:2），互不干扰
           </p>
         </section>

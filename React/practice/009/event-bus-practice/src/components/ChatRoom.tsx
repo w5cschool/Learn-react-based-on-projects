@@ -9,8 +9,10 @@ const ChatRoom: FC<{ roomId: string }> = ({ roomId }) => {
   const [input, setInput] = useState("");
 
   const [emit] = useEventChat(`room:${roomId}`, {
-    callback: (detail: { user: string; message: string; time: number }) => {
-      setMessages((prev) => [...prev, detail]);
+    callback: (detail?: { user: string; message: string; time: number }) => {
+      if (detail) {
+        setMessages((prev) => [...prev, detail]);
+      }
     },
   });
 
@@ -27,7 +29,7 @@ const ChatRoom: FC<{ roomId: string }> = ({ roomId }) => {
 
   return (
     <div style={{ padding: "20px", border: "2px solid #FF9800", borderRadius: "8px", margin: "10px" }}>
-      <h3>聊天室 #{roomId}</h3>
+      <h3 style={{ color: "#000" }}>聊天室 #{roomId}</h3>
       <div
         style={{
           height: "200px",
@@ -39,12 +41,13 @@ const ChatRoom: FC<{ roomId: string }> = ({ roomId }) => {
         }}
       >
         {messages.length === 0 ? (
-          <p style={{ color: "#999" }}>暂无消息</p>
+          <p style={{ color: "#000" }}>暂无消息</p>
         ) : (
           messages.map((msg, index) => (
-            <div key={index} style={{ marginBottom: "8px" }}>
-              <strong>{msg.user}:</strong> {msg.message}
-              <span style={{ fontSize: "12px", color: "#999", marginLeft: "8px" }}>
+            <div key={index} style={{ marginBottom: "8px", color: "#000" }}>
+              <strong style={{ color: "#000" }}>{msg.user}:</strong>{" "}
+              <span style={{ color: "#000" }}>{msg.message}</span>
+              <span style={{ fontSize: "12px", color: "#000", marginLeft: "8px" }}>
                 {new Date(msg.time).toLocaleTimeString()}
               </span>
             </div>
@@ -63,6 +66,7 @@ const ChatRoom: FC<{ roomId: string }> = ({ roomId }) => {
             padding: "8px",
             border: "1px solid #ddd",
             borderRadius: "4px",
+            color: "#000",
           }}
         />
         <button

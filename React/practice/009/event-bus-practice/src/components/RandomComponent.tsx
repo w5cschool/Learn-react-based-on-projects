@@ -17,12 +17,12 @@ const RandomComponent: FC = () => {
 
   return (
     <div style={{ padding: "20px", border: "2px solid #2196F3", borderRadius: "8px", margin: "10px" }}>
-      <h3>RandomComponent 组件</h3>
-      <p>我不在同层级，也能收到 "sub-mox" 的消息</p>
+      <h3 style={{ color: "#000" }}>RandomComponent 组件</h3>
+      <p style={{ color: "#000" }}>我不在同层级，也能收到 "sub-mox" 的消息</p>
       <div style={{ marginTop: "10px" }}>
-        <strong>收到的消息列表：</strong>
+        <strong style={{ color: "#000" }}>收到的消息列表：</strong>
         {messages.length === 0 ? (
-          <p style={{ color: "#999" }}>暂无消息</p>
+          <p style={{ color: "#000" }}>暂无消息</p>
         ) : (
           <ul style={{ listStyle: "none", padding: 0 }}>
             {messages.map((msg, index) => (
@@ -33,6 +33,7 @@ const RandomComponent: FC = () => {
                   margin: "4px 0",
                   backgroundColor: "#f0f0f0",
                   borderRadius: "4px",
+                  color: "#000",
                 }}
               >
                 {JSON.stringify(msg, null, 2)}

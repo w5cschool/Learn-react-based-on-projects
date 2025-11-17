@@ -36,8 +36,8 @@ const RequestResponseDemo: FC = () => {
 
   return (
     <div style={{ padding: "20px", border: "2px solid #9C27B0", borderRadius: "8px", margin: "10px" }}>
-      <h3>请求/响应模式演示（RPC）</h3>
-      <p>点击按钮发送请求，获取用户信息</p>
+      <h3 style={{ color: "#000" }}>请求/响应模式演示（RPC）</h3>
+      <p style={{ color: "#000" }}>点击按钮发送请求，获取用户信息</p>
       <button
         onClick={handleRequest}
         disabled={loading}
@@ -63,9 +63,10 @@ const RequestResponseDemo: FC = () => {
             borderRadius: "4px",
             fontFamily: "monospace",
             fontSize: "12px",
+            color: "#000",
           }}
         >
-          <pre>{result}</pre>
+          <pre style={{ color: "#000", margin: 0 }}>{result}</pre>
         </div>
       )}
     </div>
