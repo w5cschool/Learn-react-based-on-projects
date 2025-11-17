@@ -1,8 +1,11 @@
 :root {
+  /* 字体 */
   font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
   color: #1f2937;
   background-color: #f3f4f6;
+  /* 行高 */
   line-height: 1.5;
+  /* 字体粗细 */
   font-weight: 400;
 }
 
@@ -11,7 +14,9 @@ body {
 }
 
 .catalog-page {
+  /* 最大宽度 */
   max-width: 1200px;
+  /* 自动居中 */
   margin: 0 auto;
   padding: 2.5rem 1.5rem 3rem;
 }
@@ -88,13 +93,16 @@ display: flex; flex-direction: column; gap: 0.75rem;
   border: 1px solid #e5e7eb;
   border-radius: 14px;
   padding: 1.25rem;
-
+  /* 阴影 */
   box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+  /* 过渡 */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .product-card:hover {
+  /* 上移 */
   transform: translateY(-6px);
+  /* 阴影 */
   box-shadow: 0 18px 32px rgba(15, 23, 42, 0.12);
 }
 

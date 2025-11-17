@@ -4,6 +4,7 @@ import Filters from './components/Filters'
 import ProductCard from './components/ProductCard'
 import { Link,Route,Routes,Navigate } from 'react-router-dom'
 import Products from './products'
+import { CartProvider } from './context/CartContext'
 
 
 function HomePage() {
@@ -43,6 +44,7 @@ function CartPage() {
 
 function App() {
   return (
+    <CartProvider>
     <div className='app-layout'>
       <header className='app-header'>
         <nav className='nav'>
@@ -63,6 +65,7 @@ function App() {
         </Routes>
       </main>
     </div>
+    </CartProvider>
   )
 }
 

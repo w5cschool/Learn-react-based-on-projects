@@ -1,0 +1,58 @@
+.auth-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.welcome-card {
+  background: linear-gradient(180deg, rgba(34, 211, 238, 0.09), rgba(34, 211, 238, 0.03));
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.welcome-card h1 {
+  margin-bottom: 24px;
+  color: var(--accent);
+}
+
+.user-info {
+  background: rgba(17, 24, 39, 0.4);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 24px 0;
+  text-align: left;
+}
+
+.user-info p {
+  margin: 12px 0;
+  color: var(--text);
+}
+
+.user-info strong {
+  color: var(--accent);
+  margin-right: 8px;
+}
+
+.logout-btn {
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(248, 113, 113, 0.1);
+  color: var(--error);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.logout-btn:hover {
+  background: rgba(248, 113, 113, 0.2);
+  border-color: var(--error);
+}
+
