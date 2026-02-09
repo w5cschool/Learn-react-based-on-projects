@@ -1,148 +1,93 @@
-太好了 💪 你这种“边做边学”的方式其实是最有效的，尤其学 React！
-因为 React 本身就是一个以项目驱动为核心的框架，
-只看教程不写项目几乎学不会。
+按“先地基→再框架→再性能→再跨端→再面试”的顺序，最稳：
 
-那我帮你设计一个 “纯实践型 React 学习路线”，
-用 5 个递进式小项目 帮你从零到能做真实网站。
-每个项目都能让你掌握一批 React 核心技能，
-最后你能独立做出一个能上线的完整前端应用。
+A. 地基层（必须先）
 
-⸻
+JavaScript 核心进阶
 
-🧱 React 实战学习路线（实践为主）
+React 原理面试
 
-🩵 阶段 1：环境搭建 + Hello React
+反演法：多数人中后期崩在“JS/React 底层不清晰 → 状态与渲染失控”。
 
-项目：React 环境配置与第一个组件
+B. 框架层（把 React 写成产品）
 
-🎯 目标：熟悉开发环境、会跑第一个 React 程序。
-📦 技术点：
-	•	Node.js + npm 环境
-	•	npx create-react-app myapp 或 npm create vite@latest
-	•	JSX、组件结构、export/import
-	•	useState() 实现按钮计数器
+React 18 基础 / React 19 基础（选一个主版本作为主线）
 
-💡 小练习：
+React 18 架构 / React 19 架构（配套你主线版本）
 
-function Counter() {
-  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>+1</button>
-    </div>
-  );
-}
+Zustand
 
-✅ 输出成果：
-一个能点击计数的简单网页。
+React Query
 
-⸻
+这是“能写业务 + 能写复杂业务”的分水岭。
 
-💚 阶段 2：Todo List 应用
+C. 工程/落地层（你提到的 NextJS 就在这里）
 
-项目：待办事项管理系统
+NextJS 16 实战进阶
 
-🎯 目标：理解组件、状态管理、props、列表渲染。
-📦 技术点：
-	•	useState() 管理任务列表
-	•	组件拆分（App → TodoList → TodoItem）
-	•	添加 / 删除 / 标记完成任务
-	•	数据保存到 localStorage
+这块负责：SSR/SEO、路由与数据获取、工程化、线上交付——你做 LinkerTube 这种产品非常吃这一套。
 
-💡 功能：
-	•	输入框 + 添加按钮
-	•	显示任务列表
-	•	每项可删除或打勾完成
+D. 跨端层（RN + 原生）
 
-✅ 输出成果：
-一个完整的交互式 Todo 应用。
-（🎯 你已经掌握了 React 基本语法、state 管理、事件绑定）
+React Native 跨平台进阶
 
-⸻
+React Native 跨平台实战进阶（预购那个）
 
-💙 阶段 3：产品展示页（电商风格）
+负责移动端能力和“跨平台护城河”。
 
-项目：Product Catalog
+E. 辅助但很值钱（贯穿全程）
 
-🎯 目标：学会用 API 获取数据、展示列表、处理交互。
-📦 技术点：
-	•	useEffect() 调用 API（比如 fakestoreapi.com）
-	•	加载中状态（Loading / Error）
-	•	组件复用（ProductCard）
-	•	Tailwind CSS 美化界面
+SUPER CSS（UI系统、布局、适配、性能）
 
-💡 功能：
-	•	展示产品图片、名称、价格
-	•	过滤 / 排序（例如按价格或分类）
+图解算法（面试与思维表达）
 
-✅ 输出成果：
-一个漂亮的商品展示网站，可放进简历作品集。
+（AI 编程/企业级实战：放到你前端主线稳定以后再加）
 
-⸻
+2) 给你一个“12 周”排期（包含 NextJS 和其他）
 
-🧡 阶段 4：购物车系统（进阶）
+默认你是边工作边学，主目标：每周都能产出可复用资产（组件/模板/规范/项目结构）。
 
-项目：Shopping Cart App
+第 1–2 周：JS + React 原理快速打底
 
-🎯 目标：学会组件通信、状态共享、Context。
-📦 技术点：
-	•	Context API 或 Redux Toolkit
-	•	全局购物车状态
-	•	加入 / 移除商品
-	•	计算总价
-	•	页面导航（React Router）
+JS 核心：闭包、原型链、this、事件循环、Promise/async、模块化
 
-💡 功能：
-	•	“首页 → 产品 → 购物车”
-	•	动态更新购物车数量
+React 原理：渲染流程、Fiber、Diff、Hooks、状态更新
+产出资产：
 
-✅ 输出成果：
-一个小型电商前端系统，模拟 Amazon 风格。
+《React 重渲染与性能检查清单》
 
-⸻
+《JS 异步与事件循环可视化笔记》
 
-💜 阶段 5：全栈整合项目
+第 3–5 周：React 19（或 18）基础 + Zustand/Query
 
-项目：用户登录 + 产品管理系统
+以“业务开发套路”为主：组件模式、表单、列表、缓存、错误处理
 
-🎯 目标：学会前后端交互（为找工作做准备）
-📦 技术点：
-	•	React 前端 + Node.js (Express) 后端
-	•	调用 API：登录、注册、获取用户数据
-	•	JWT 鉴权（后端生成 token，前端保存）
-	•	React Router 保护路由（Protected Route）
+Zustand：UI 状态/全局状态分层
 
-💡 功能：
-	•	注册 / 登录页面
-	•	登录后显示个人信息和订单列表
+React Query：请求缓存、失效策略、乐观更新
+产出资产：
 
-✅ 输出成果：
-一个完整的全栈项目，可部署上线（例如 Render / Vercel）。
-（🎯 可放简历上作为“Full Stack Developer Project”）
+你自己的“数据层封装（query keys + hooks 模板）”
 
-⸻
+“状态分层规范（UI vs server state）”
 
-🚀 最后阶段：上线与展示
+第 6–8 周：React 架构 + NextJS 16 实战进阶（你要的重点）
 
-📦 技术点：
-	•	使用 Vercel / Netlify 部署前端
-	•	使用 Render 部署后端（如果有）
-	•	连接自定义域名
-	•	添加 GitHub 项目链接 + 演示链接
+React 架构：目录结构、模块边界、可维护性、性能、工程约束
 
-🎯 输出成果：
-	•	可在线访问的项目
-	•	作品集 Portfolio 一键展示
+NextJS 16：SSR/SEO、路由、数据获取、部署、性能
+产出资产（非常关键）：
 
-⸻
+LinkerTube 的 Next 项目骨架（可复用模板）
 
-📅 建议时间表（6 周实践计划）
+SEO/SSR 最佳实践清单（这直接是你的护城河）
 
-周次	项目	目标
-第 1 周	Hello React + Counter	熟悉语法与开发环境
-第 2 周	Todo List	掌握状态与事件处理
-第 3 周	Product Catalog	学 API + useEffect
-第 4–5 周	Shopping Cart	掌握状态共享 + 路由
-第 6 周	Full Stack 登录系统	熟悉前后端交互与部署
+第 9–12 周：RN 进阶 + 跨平台实战
 
+RN 组件体系、性能、Bridge/通信（按课程来）
+
+同步做一个 LinkerTube 移动端 MVP（哪怕功能少）
+产出资产：
+
+RN 项目模板（导航、状态、网络层、播放器模块）
+
+关键模块（视频播放/字幕/单词卡）可复用实现
